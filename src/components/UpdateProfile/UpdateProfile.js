@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert, Container } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
+import Logo from '../Icons/Logo'
 
 export default function UpdateProfile() {
   const emailRef = useRef() 
@@ -44,8 +45,10 @@ export default function UpdateProfile() {
   return (
     <>
      <Container
-        className='d-flex align-items-center justify-content-center'
+        className='d-flex align-items-center flex-column justify-content-center'
         style={{ minHeight: '100vh' }} >
+           <Logo />
+           <h2 className='text-center mt-1 mb-1'>PhotoZ</h2>
           <div className='w-100' style={{ maxWidth: '400px' }}>
           <Card>
             <Card.Body>

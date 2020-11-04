@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert, Container } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
+import Logo from '../Icons/Logo'
 
 export default function Signin() {
   const emailRef = useRef() 
@@ -28,9 +29,11 @@ export default function Signin() {
   return (
     <>
      <Container
-        className='d-flex align-items-center justify-content-center'
+        className='d-flex align-items-center flex-column justify-content-center'
         style={{ minHeight: '100vh' }} >
-          <div className='w-100' style={{ maxWidth: '400px' }}>
+           <Logo />
+           <h2 className='text-center mt-1 mb-1'>PhotoZ</h2>
+            <div className='w-100 mt-1' style={{ maxWidth: '400px' }}>
           <Card>
             <Card.Body>
               <h4 className='mb-4 justify-content-start'>Sign in</h4>

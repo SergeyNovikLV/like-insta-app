@@ -7,13 +7,12 @@ import Dashboard from './Dashboard/Dashboard'
 import ForgotPassword from './ForgotPassword/ForgotPassword'
 import PrivateRoute from './PrivateRoute/PrivateRoute'
 import UpdateProfile from './UpdateProfile/UpdateProfile'
-
+// import MyModal from './Modal/Modal'
 
 function App() {
-  return (
-  <AuthProvider>
-   
-       <Router>
+  return ( 
+    <AuthProvider>
+      <Router>
          <AuthProvider>
            <Switch>
               <PrivateRoute exact path='/' component={Dashboard} />
@@ -24,9 +23,6 @@ function App() {
            </Switch>
          </AuthProvider>
        </Router>
-    
-    
-    
     </AuthProvider> 
   );
 }
