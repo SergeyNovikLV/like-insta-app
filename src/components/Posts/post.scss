@@ -1,0 +1,41 @@
+.post-container {
+  margin: 10px 0;
+  background-color: white;
+
+.post-title {
+  padding: 20px
+  }
+
+.card-bottom {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  height: 40px;
+  margin: 20px 0;
+  
+
+  .post-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #0069d9;
+    color: white;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-tag {
+    padding: 0;
+    margin: 0;
+    background: #F2F2F2;
+    margin-left: 15px;
+    padding: 8px 16px;
+    border-radius: 4px;
+   }
+
+  }
+}
+

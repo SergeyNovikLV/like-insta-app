@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Form, Button, Card } from 'react-bootstrap'
+import {  Form, Button, Card } from 'react-bootstrap'
 import { db } from '../../firebase'
 import Posts from '../Posts/Posts'
 import './home.scss'
@@ -7,23 +7,18 @@ import './home.scss'
 function Home() {
   // those const reffer to props set in Posts compon
   const [postTitle, setPostTitle] = useState('');
-  const [postImage, setPostImage] = useState('');
+  const [postImgUrl, setPostImage] = useState('');
+  const [postImgAlt, setImgAlt] = useState('');
   const [postAuthor, setPostAuthor] = useState('');
   const [postTag, setPostTag] = useState('');
   const [posts, setPosts] = useState([])
  
-  useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => (
-      setPosts(snapshot.docs.map(doc => doc.data()))
-      ))
-  }, [])
+  
 
   const handleChange = (e) => {
     e.preventDefault();
-    setPostTitle(e.target.value)
-    setPostImage(e.target.value)
-    setPostAuthor(e.target.value)
-    setPostTag(e.target.value)
+    setPostTitle(e.target.value);
+  
   };
 
 
@@ -31,12 +26,14 @@ function Home() {
     e.preventDefault()
     db.collection('posts').add({
       title: postTitle,
-      imgUrl: postImage,
-      postAuthor: postAuthor,
-      postTag: postTag,
+      imgUrl: postImgUrl,
+      imgAlt: postImgAlt,
+      author: postAuthor,
+      tag: postTag,
      });
      setPostTitle('');
      setPostImage('');
+     setImgAlt('');
      setPostAuthor('');
      setPostTag('')
   }
@@ -49,7 +46,7 @@ function Home() {
 
   return (
     <>
-      <Container className='home-container'>
+      <div className='home-container d-flex align-items-center flex-column justify-content-center'>
         <Card>
           <Card.Body>
               <h4 className='mb-4 justify-content-start'>New post</h4>
@@ -57,8 +54,8 @@ function Home() {
                   <Form.Group>
                   <Form.Label>Write title</Form.Label>
                      <Form.Control 
-                       onChange={(e) => setPostTitle(e.target.value)}
-                       value={setPostTitle}
+                        onChange={handleChange}
+                       value={postTitle}
                       type='text' 
                       placeholder='Write post title'/> 
                   </Form.Group> 
@@ -67,9 +64,17 @@ function Home() {
                   <Form.Label>Paste image url here</Form.Label>
                      <Form.Control 
                       onChange={(e) => setPostImage(e.target.value)}
-                      value={postImage}
+                      value={postImgUrl}
                       type='text' 
                       placeholder='File is not selected'/> 
+                  </Form.Group>
+                  <Form.Group>
+                  <Form.Label>Paste image url here</Form.Label>
+                     <Form.Control 
+                      onChange={(e) => setImgAlt(e.target.value)}
+                      value={postImgAlt}
+                      type='text' 
+                      placeholder='Alt'/> 
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Post author</Form.Label>
@@ -99,10 +104,10 @@ function Home() {
             </Card>
            <Card className="post-card mt-4">
               {posts.map((post) => (
-                <Posts key={post} title={post.title} imgUrl={post.imgUrl} postAuthor={post.postAuthor} postTag={post.postTag} />
+                <Posts key={post.imgUrl} post={post}  title={post.title} imgUrl={post.imgUrl} imgAlt={post.imgAlt} author={post.author} tag={post.tag} />
               )) }
          </Card>
-      </Container>
+      </div>
     </>
   )
 }
