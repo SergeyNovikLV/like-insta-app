@@ -79,8 +79,7 @@ function Home() {
                       type='text' 
                       placeholder='Alt'/> 
                   </Form.Group>
-                 
-                  <div className='d-flex justify-content-end mt-2'>
+               <div className='d-flex justify-contengit ct-end mt-2'>
                     <Button 
                     onClick={sendPosts}
                       variant='primary'
