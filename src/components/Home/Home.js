@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import {  Form, Button, Card } from 'react-bootstrap'
 import { db } from '../../firebase'
 import Posts from '../Posts/Posts'
+// import { ModalContext } from "../../contexts/context";
 import './home.scss'
 
 function Home() {
-  // those const reffer to props set in Posts compon
+ 
   const [postTitle, setPostTitle] = useState('');
   const [postImgUrl, setPostImage] = useState('');
   const [postImgAlt, setImgAlt] = useState('');
@@ -44,6 +45,8 @@ function Home() {
     );
   }, [])
 
+  // let { handleModal } = React.useContext(ModalContext);
+
   return (
     <>
       <div className='home-container d-flex align-items-center flex-column justify-content-center'>
@@ -76,22 +79,7 @@ function Home() {
                       type='text' 
                       placeholder='Alt'/> 
                   </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Post author</Form.Label>
-                    <Form.Control 
-                      onChange={(e) => setPostAuthor(e.target.value)}
-                      value={postAuthor}
-                      type='text' 
-                      placeholder='Set author'/>
-                  </Form.Group> 
-                  <Form.Group>
-                  <Form.Label>Post tag</Form.Label>
-                  <Form.Control 
-                      onChange={(e) => setPostTag(e.target.value)}
-                      value={postTag}
-                      type='text' 
-                      placeholder='Set tag'/> 
-                  </Form.Group>
+                 
                   <div className='d-flex justify-content-end mt-2'>
                     <Button 
                     onClick={sendPosts}
@@ -104,10 +92,18 @@ function Home() {
             </Card>
            <Card className="post-card mt-4">
               {posts.map((post) => (
-                <Posts key={post.imgUrl} post={post}  title={post.title} imgUrl={post.imgUrl} imgAlt={post.imgAlt} author={post.author} tag={post.tag} />
+                <Posts key={post.imgUrl} post={post}  title={post.title} imgUrl={post.imgUrl}  />
               )) }
-         </Card>
+              
+         </Card> 
       </div>
+      {/* <button
+        className="mt-6 rounded  bg-purple-700 text-purple-100 px-5 h-12"
+        onClick={() => handleModal("This is component modal content")}
+      >
+        open this modal!
+      </button> */}
+      
     </>
   )
 }

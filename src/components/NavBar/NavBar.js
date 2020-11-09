@@ -78,27 +78,43 @@ function NavBar()  {
       <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
           <Modal.Title>New post</Modal.Title>
-        </Modal.Header>
+      </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>Choose file</Form.Label>
+        <Form>
+          <Form.Group>
+            <Form.Label>Write title</Form.Label>
               <Form.Control 
+                onChange={handleChange}
+                value={postTitle}
+                type='text' 
+                placeholder='Write post title'/> 
+            </Form.Group> 
+                 
+            <Form.Group>
+              <Form.Label>Paste image url here</Form.Label>
+                <Form.Control 
                   onChange={(e) => setPostImage(e.target.value)}
-                  value={postImage}
+                  // value={postImgUrl}
                   type='text' 
                   placeholder='File is not selected'/> 
-                
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Post title</Form.Label>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Paste image url here</Form.Label>
                 <Form.Control 
-                  onChange={handleChange} 
-                  value={postTitle}
+                  // onChange={(e) => setImgAlt(e.target.value)}
+                  // value={postImgAlt}
                   type='text' 
-                  placeholder='Some title here'/> 
-              </Form.Group>
-            </Form>
+                  placeholder='Alt'/> 
+            </Form.Group>
+                 
+                  <div className='d-flex justify-content-end mt-2'>
+                    <Button 
+                    // onClick={sendPosts}
+                      variant='primary'
+                      >Create
+                    </Button>
+                  </div>
+              </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

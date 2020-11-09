@@ -1,0 +1,21 @@
+.comment-input-container {
+  display: flex;
+ 
+
+  .form-group {
+    margin-bottom: 1rem;
+    width: 106vh;
+  }
+
+  .btn {
+    margin-top: -8px;
+    height: 38px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+
+  input {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+}
