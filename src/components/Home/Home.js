@@ -5,37 +5,26 @@ import Posts from '../Posts/Posts'
 import './home.scss'
 
 function Home() {
-  // those const reffer to props set in Posts compon
+  // those const reffer to props set in Posts component
   const [postTitle, setPostTitle] = useState('');
   const [postImgUrl, setPostImage] = useState('');
-  const [postImgAlt, setImgAlt] = useState('');
-  const [postAuthor, setPostAuthor] = useState('');
-  const [postTag, setPostTag] = useState('');
   const [posts, setPosts] = useState([])
  
-  
-
+  // create new posts functions
   const handleChange = (e) => {
     e.preventDefault();
     setPostTitle(e.target.value);
   
   };
 
-
   const sendPosts = (e) => {
     e.preventDefault()
     db.collection('posts').add({
       title: postTitle,
       imgUrl: postImgUrl,
-      imgAlt: postImgAlt,
-      author: postAuthor,
-      tag: postTag,
      });
      setPostTitle('');
      setPostImage('');
-     setImgAlt('');
-     setPostAuthor('');
-     setPostTag('')
   }
 
   useEffect(() => {
@@ -44,6 +33,7 @@ function Home() {
     );
   }, [])
 
+  
   return (
     <>
       <div className='home-container d-flex align-items-center flex-column justify-content-center'>
@@ -68,31 +58,8 @@ function Home() {
                       type='text' 
                       placeholder='File is not selected'/> 
                   </Form.Group>
-                  <Form.Group>
-                  <Form.Label>Paste image url here</Form.Label>
-                     <Form.Control 
-                      onChange={(e) => setImgAlt(e.target.value)}
-                      value={postImgAlt}
-                      type='text' 
-                      placeholder='Alt'/> 
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Post author</Form.Label>
-                    <Form.Control 
-                      onChange={(e) => setPostAuthor(e.target.value)}
-                      value={postAuthor}
-                      type='text' 
-                      placeholder='Set author'/>
-                  </Form.Group> 
-                  <Form.Group>
-                  <Form.Label>Post tag</Form.Label>
-                  <Form.Control 
-                      onChange={(e) => setPostTag(e.target.value)}
-                      value={postTag}
-                      type='text' 
-                      placeholder='Set tag'/> 
-                  </Form.Group>
-                  <div className='d-flex justify-content-end mt-2'>
+             
+                <div className='d-flex justify-content-end mt-2'>
                     <Button 
                     onClick={sendPosts}
                       variant='primary'
@@ -103,9 +70,12 @@ function Home() {
               </Card.Body>
             </Card>
            <Card className="post-card mt-4">
-              {posts.map((post) => (
-                <Posts key={post.imgUrl} post={post}  title={post.title} imgUrl={post.imgUrl} imgAlt={post.imgAlt} author={post.author} tag={post.tag} />
+              <Card.Body> 
+                 {posts.map((post) => (
+                <Posts key={post.imgUrl}  title={post.title} imgUrl={post.imgUrl}  />
               )) }
+              </Card.Body>
+      
          </Card>
       </div>
     </>
