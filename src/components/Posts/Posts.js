@@ -2,9 +2,9 @@ import React from 'react'
 import { Card } from 'reactstrap'
 import Image from '../Image/Image'
 import './post.scss'
-import Comments from '../Comments/Comments'
+import Comment from '../Comments/Comment'
 
-function Posts({ title, imgUrl, imgAlt }) {
+function Posts({ title, imgUrl, imgAlt, postId }) {
   return (
     <div className='post-card'>
       <Card className="mt-4">
@@ -12,7 +12,7 @@ function Posts({ title, imgUrl, imgAlt }) {
         <h4 className="post-title"> {title} </h4>
         <Image src={imgUrl} className="post-image"  alt={imgAlt} />
         <div className='card-bottom'>
-          <Comments/>
+          <Comment postId={postId}/>
         </div>
         </div>
        </Card>

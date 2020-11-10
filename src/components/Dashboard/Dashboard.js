@@ -5,7 +5,6 @@ import './dashboard.scss'
 // import UploadPost from '../UploadPost/UploadPost'
 // import Modal from '../Modal/Modal'
 
-import Posts from '../Posts/Posts'
 
 export default function Dashboard() {
   return (
@@ -13,7 +12,7 @@ export default function Dashboard() {
      <div className='dashboard'>
         <NavBar />
         <Home />
-        <Posts />
+        
       </div>
    </>
   )
