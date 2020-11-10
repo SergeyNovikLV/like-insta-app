@@ -7,10 +7,13 @@
   }
 
 .card-bottom {
+  display: flex;
   padding: 20px;
-  height: auto;
+  align-items: center;
+  height: 40px;
   margin: 20px 0;
   
+
   .post-author {
     display: flex;
     align-items: center;
@@ -31,10 +34,6 @@
     margin-left: 15px;
     padding: 8px 16px;
     border-radius: 4px;
-   }
-
-   .post-text {
-     font-weight: normal;
    }
 
   }
