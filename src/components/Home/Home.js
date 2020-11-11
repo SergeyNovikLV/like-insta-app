@@ -11,6 +11,11 @@ function Home() {
   const [postTitle, setPostTitle] = useState('');
   const [postImgUrl, setPostImage] = useState('');
   
+  
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const btnStyle = {
     position: 'absolute',
     top: '15px',
@@ -32,6 +37,7 @@ function Home() {
      });
      setPostTitle('');
      setPostImage('');
+     setShow(false);
   }
 
   useEffect(() => {
@@ -43,12 +49,6 @@ function Home() {
     }) 
   }, []);
 
-
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  console.log(posts)
   
   return (
     <>
@@ -92,9 +92,7 @@ function Home() {
                 >Create
             </Button>
            </div>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+         
         </Modal.Footer>
       </Modal>
       <div style={btnStyle}>
