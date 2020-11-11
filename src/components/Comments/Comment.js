@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { db } from '../../firebase'
-import './comment.scss'
 import { useAuth } from '../../contexts/AuthContext'
 
 function Comment({ postId, text, username }) {
