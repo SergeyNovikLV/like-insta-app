@@ -1,7 +1,5 @@
 .home-container {
-  padding: 50px;
-  background-color: #E5E5E5;
-  min-width: 700px;
+ background-color: #E5E5E5;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +7,15 @@
 
 .card {
   border: 0px;
-  max-width: 800px;
+  width: 800px;
   background-color: transparent;
+  }
+ 
+}
+
+
+@media only screen and (max-width: 768px) {
+  .home-container  .card {
+    width: 400px!important;
   }
 }
