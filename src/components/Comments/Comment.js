@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import { db } from '../../firebase'
 import { useAuth } from '../../contexts/AuthContext'
 
-function Comment({ postId, text, username }) {
+function Comment({ postId }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
   const {currentUser} = useAuth()
@@ -33,13 +33,11 @@ function Comment({ postId, text, username }) {
          
      });
      setComment('');
-    
   }
-
 
   return (
     <div className="comment-container">
-      <div className='comment-field'>
+      <div className='comment-field' data-test='comment-field'>
       {comments.map((comment) => (
           <p><strong>{(currentUser || {}).email}</strong> {comment.text}</p>
           )) }

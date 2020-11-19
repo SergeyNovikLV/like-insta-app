@@ -32,6 +32,7 @@ function Home() {
      });
      setPostTitle('');
      setPostImage('');
+     setShow(false);
   }
 
   useEffect(() => {
@@ -43,24 +44,21 @@ function Home() {
     }) 
   }, []);
 
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  console.log(posts)
   
   return (
     <>
       <div className='home-container d-flex align-items-center flex-column justify-content-center'>
         <div className="post-card mt-4">
             {posts.map(({id, post}) => (
-              <Posts key={id}  postId={id} username='SN' title={post.title} imgUrl={post.imgUrl} />
+              <Posts key={id}  postId={id}  title={post.title} imgUrl={post.imgUrl} />
             )) }
          </div> 
       </div>
      
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className='create-post-modal'>
         <Modal.Header closeButton>
           <Modal.Title>New post</Modal.Title>
         </Modal.Header>

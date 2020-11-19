@@ -36,12 +36,6 @@ export function AuthProvider({ children }) {
     return auth.signOut
    }
 
-  useEffect(() => {
-  const unsubscribe = auth.onAuthStateChanged(user => {
-      setCurrentUser(user)
-    })
-    return unsubscribe
-  }, [])
  
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {

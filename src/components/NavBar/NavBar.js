@@ -3,13 +3,11 @@ import {
   Navbar,
   NavDropdown,
   Nav,
-  Alert,
-
+  Alert
  } from 'react-bootstrap';
 import { useHistory, Link } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 import Logo from '../Icons/Logo'
-
 
 import './navbar.scss'
 
@@ -27,27 +25,21 @@ function NavBar()  {
     } catch {
       setError('Failed to log out')
      }
-    }
- 
-  
+ }
+   
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-        <Navbar.Brand href="#home"> <Logo size={42} color="white" className="mr-md-3" />{' '}</Navbar.Brand>
+      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" className='app-navbar'>
+        <Navbar.Brand href="#home" data-test='navbarBrand'> <Logo size={42} color="white" className="mr-md-3 brand" />{' '}</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               {error && <Alert variant='danger'>{error}</Alert>}
-              <Nav className="ml-auto">
-              {/* <Button variant="info" onClick={handleShow} className='post-btn'>
-                Create New Post
-              </Button> */}
+              <Nav className="ml-auto" data-test='rightNav'>
                 <NavDropdown title={(currentUser || {}).email} id="collasible-nav-dropdown">
-                {/* <NavDropdown title='Sergy Nov' id="collasible-nav-dropdown"> */}
-                <NavDropdown.Item> <Link to='/update-profile'>Update profile</Link></NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleLogout}>Sign Out</NavDropdown.Item>
-                </NavDropdown>
+                 <NavDropdown.Item> <Link to='/update-profile'>Update profile</Link></NavDropdown.Item>
+                    <NavDropdown.Item onClick={handleLogout}>Sign Out</NavDropdown.Item>
+                  </NavDropdown>
               </Nav>
-              
             </Navbar.Collapse>
       </Navbar>
 
